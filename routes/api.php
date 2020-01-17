@@ -18,8 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 });
 Route::post('/user','Controllers\Usercontroller@login');
-Route::post('/customer','Controllers\Customercontroller@create');
-Route::post('/sell','Controllers\Customercontroller@NewSellMenu');
-Route::post('/item','Controllers\Itemcontroller@gg');
+Route::get('/newsellmenu','Controllers\Customercontroller@create');
+Route::post('/delete','Controllers\Deletecontroller@delete');
+Route::post('/item','Controllers\Itemcontroller@item');
+Route::post('/sellmenuitem','Controllers\SellMenuItem@SMI');
+Route::post('/oldmenu','Controllers\Oldmenucontroller@oldmenu');
 
 
