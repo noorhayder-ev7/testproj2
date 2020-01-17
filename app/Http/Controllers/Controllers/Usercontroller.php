@@ -12,7 +12,14 @@ class Usercontroller extends Controller
         $body = $request->all();
         $password = $body['secret_word'];
         $data = (new \App\models\User)->where('secret_word', $password)->first(['id','name']);
+        if ($data)
+ {
+     return response()->json($data);
 
-        return response()->json($data);
+        }
+        else
+                return response()->json(['message'=> 'NOT FOUND']);
+
+
     }
 }

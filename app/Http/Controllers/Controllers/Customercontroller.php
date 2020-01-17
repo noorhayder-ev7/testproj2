@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\Controllers;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\models\Customer;
@@ -9,18 +10,30 @@ class Customercontroller extends Controller
     public function create(Request $request)
     {
         $Customers=new Customer();
-        $Customers->name=$request->input('name');
-        $Customers->note=$request->input('note');
-        $Customers->type=$request->input('type');
+        $Customers->name="زبون";
+        $Customers->note="NULL";
+        $Customers->type="0";
+        $Customers->f1="زبون";
         $Customers->save();
         $sellmenu=new SellMenu();
         $sellmenu->customer_id = $Customers->id;
-        $sellmenu->date=$request->input('date');
-        $sellmenu->time=$request->input('time');
-        $sellmenu->discount=$request->input('discount');
-        $sellmenu->status=$request->input('status');
+        $mydate = Carbon::now();
+         $mydate->toDateTimeString();
+         $sellmenu->date=$mydate;
+        $sellmenu->time=$mydate;
+        $sellmenu->discount="0";
+        $sellmenu->status="0";
+        $sellmenu->f1="مؤقت";
+        $sellmenu->user_finshed_id="0";
         $sellmenu->save();
-        return response()->json([$Customers,$sellmenu]);
+        if ($sellmenu)
+        {
+            return response()->json($sellmenu->id);
+
+        }
+        else
+            return response()->json(['message'=> 'ERROR']);
+
 
 
 

@@ -7,11 +7,18 @@ use App\Http\Controllers\Controller;
 use App\models\Item;
 class Itemcontroller extends Controller
 {
-    public function gg(Request $request){
+    public function item(Request $request){
 
         $body = $request->all();
         $barcode = $body['barcode'];
-        $data = (new \App\models\Item)->where('barcode', $barcode)->first();
-        return response()->json($data);
+        $data = (new \App\models\Item)->where('barcode', $barcode)->where('status', 0)->first();
+        if ($data)
+        {
+            return response()->json($data);
+
+        }
+        else
+            return response()->json(['message'=> 'ERROR']);
+
     }
 }
