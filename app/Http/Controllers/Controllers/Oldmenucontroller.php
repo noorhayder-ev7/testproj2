@@ -10,8 +10,11 @@ class Oldmenucontroller extends Controller
     public function oldmenu(Request $request){
 
         $body = $request->all();
-        $id= $body['id'];
-        $data = (new \App\models\SellMenuItem)->where('sell_menu_id', $id)->get();
+       $id= $body['id'];
+          $data = SellMenu::where('id', $id)
+            ->where('status', 0)
+            ->with('SellMenuItem')
+            ->get();
         if ($data)
         {
             return response()->json($data);

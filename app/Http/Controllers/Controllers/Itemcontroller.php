@@ -11,7 +11,7 @@ class Itemcontroller extends Controller
 
         $body = $request->all();
         $barcode = $body['barcode'];
-        $data = (new \App\models\Item)->where('barcode', $barcode)->where('status', 0)->first();
+        $data = (new \App\models\Item)->where('barcode', $barcode)->first();
         if ($data)
         {
             return response()->json($data);

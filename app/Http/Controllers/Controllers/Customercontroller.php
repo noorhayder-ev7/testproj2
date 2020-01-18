@@ -28,7 +28,7 @@ class Customercontroller extends Controller
         $sellmenu->save();
         if ($sellmenu)
         {
-            return response()->json($sellmenu->id);
+            return response()->json($sellmenu);
 
         }
         else
