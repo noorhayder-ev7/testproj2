@@ -13,4 +13,5 @@ class SellMenuItem extends Model
         return $this->belongsTo('App\models\SellMenu');
     }
 
+
 }

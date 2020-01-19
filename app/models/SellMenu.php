@@ -13,4 +13,5 @@ class SellMenu extends Model
         return $this->hasMany('App\models\SellMenuItem');
 
     }
+
 }
