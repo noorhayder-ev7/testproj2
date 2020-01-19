@@ -22,6 +22,7 @@ Route::get('/newsellmenu','Controllers\Customercontroller@create');
 Route::post('/delete','Controllers\Deletecontroller@delete');
 Route::post('/item','Controllers\Itemcontroller@item');
 Route::post('/sellmenuitem','Controllers\SellMenuItem@SMI');
+Route::post('/update','Controllers\Updatecontroller@update');
 Route::post('/oldmenu','Controllers\Oldmenucontroller@oldmenu');
 
 
