@@ -13,7 +13,7 @@ class Updatecontroller extends Controller
         $id= $body['id'];
         $itemcount=$body['item_count'];
         $datetime=$body['datetime'];
-        $data = SellMenuItem::where('id', $id)->update(['item_count'=>$itemcount],['datetime'=>$datetime]);
+        $data = SellMenuItem::where('id', $id)->update(['item_count'=>$itemcount,'datetime'=>$datetime]);
         if ($data)
         {
             return response()->json(['message'=> 'update DONE']);
